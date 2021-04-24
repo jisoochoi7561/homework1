@@ -1,47 +1,36 @@
-
-import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import java.util.ArrayList;
+
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class CustomCalculatorTest {
 
     private CustomCalculator customCalculator;
 
-    //더하기 테스트 작성
     @Test
-    public void add() {
+    public void addTest(){
         customCalculator = new CustomCalculator();
-        int result = customCalculator.add(10,15);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.add(10,10);
+        assertEquals(result,20);
     }
 
-    //빼기 테스트 작성
     @Test
-    public void subtract() {
+    public void testSubtract(){
         customCalculator = new CustomCalculator();
-        int result = customCalculator.subtract(23,10);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+        int result = customCalculator.subtract(10,10);
+        assertThat(result,is(0));
     }
 
-    //곱하기 테스트 작성
-    @Test
-    public void multiply() {
-        customCalculator = new CustomCalculator();
-        int result = customCalculator.multiply(5,9);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void shouldThorwExceptionWhenGetZeroIndex(){
+        new ArrayList<Object>().get(0);
     }
 
-    //나누기 테스트 작성
-    @Test
-    public void divide() {
-        customCalculator = new CustomCalculator();
-        int result = customCalculator.divide(25,5);
-        /* 이곳에 테스트 코드를 작성하세요. */
-        System.out.println("result :: " + result);
+    @Test(timeout  = 5000)
+    public void testshouldRunInLimitedTime() throws InterruptedException{
+        Thread.sleep(6000);
     }
+
 }
